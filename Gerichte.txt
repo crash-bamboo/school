@@ -1,0 +1,268 @@
+using System;
+
+namespace Külschrank
+{
+    public class Gerichte
+    {
+        public static void Schnitzel()
+        {
+            if (Program.kalbsschnitzel && Program.pomes && Program.ei && Program.mehl && Program.sammelbrösel && Program.gewürze)
+            {
+                Program.kalbsschnitzel = false;
+                Program.pomes = false;
+                Program.ei = false;
+                Program.mehl = false;
+                Program.sammelbrösel = false;
+                
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihr " + Program.gerichte[1]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+        
+        public static void Bolonese()
+        {
+            if (Program.hackfleisch && Program.pasirtetomaten && Program.tomatenmark && Program.zwibeln && Program.nudeln && Program.gewürze)
+            {
+                Program.hackfleisch = false;
+                Program.pasirtetomaten = false;
+                Program.tomatenmark = false;
+                Program.zwibeln = false;
+                Program.nudeln = false;
+                
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihre " + Program.gerichte[2]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+        
+        public static void Spinat()
+        {
+            if (Program.spinat && Program.kartofeln && Program.ei && Program.gewürze)
+            {
+                Program.spinat = false;
+                Program.kartofeln = false;
+                Program.ei = false;
+
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihr " + Program.gerichte[3]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+        
+        public static void Lasagne()
+        {
+            if (Program.hackfleisch && Program.pasirtetomaten && Program.tomatenmark && Program.zwibeln && Program.nudeln && Program.knoblauch && Program.milch && Program.butter && Program.käse && Program.gewürze)
+            {
+                Program.hackfleisch = false;
+                Program.pasirtetomaten = false;
+                Program.tomatenmark = false;
+                Program.zwibeln = false;
+                Program.nudeln = false;
+                Program.knoblauch = false;
+                Program.milch = false;
+                Program.butter = false;
+                Program.käse = false;
+                
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihre " + Program.gerichte[4]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+        
+        public static void Chilli()
+        {
+            if (Program.hackfleisch && Program.knoblauch && Program.chilischoten && Program.tomaten && Program.gewürze)
+            {
+                Program.hackfleisch = false;
+                Program.knoblauch = false;
+                Program.chilischoten = false;
+                Program.tomaten = false;
+
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihre " + Program.gerichte[5]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+        
+        public static void Pizza()
+        {
+            if (Program.mehl && Program.wasser && Program.pasirtetomaten && Program.oliven && Program.käse && Program.hefe && Program.gewürze)
+            {
+                Program.mehl = false;
+                Program.wasser = false;
+                Program.pasirtetomaten = false;
+                Program.oliven = false;
+                Program.käse = false;
+                Program.hefe = false;
+
+                var random = new Random();                              // Die Gewürze werden mit einer 50% Chanse verbraucht
+                Program.gewürze = Convert.ToBoolean(random.Next(2));
+                
+                Console.WriteLine("Hier ihre " + Program.gerichte[6]);
+                Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Es fehlen zutaten.");
+                Console.WriteLine("Moöchten sie Einkaufen (y/n)?");
+                string eingabe = null;
+                try
+                {
+                    eingabe = Convert.ToString(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Program.Option("");
+                }
+
+                if (eingabe == "y")
+                {
+                    Program.Einkaufen();
+                }
+                else
+                {
+                    Program.Option("");
+                }
+                
+            }
+        }
+    }
+    
+}

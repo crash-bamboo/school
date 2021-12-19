@@ -1,0 +1,393 @@
+using System;
+
+namespace Külschrank
+{
+    class Program
+    {
+        // Liste an Gerichten
+        // -Schnitzel mit Pomes     = Kalbsschnitzel; Pomes; Ei; Mehl; Semmelbrösel; Gewürze
+        // -Nudel Bolonese          = Hackfleich; Pasirtetomaten; Tomarenmark; Zwibeln; Nudeln; Knoblauch; Gewürze
+        // -Spinat Katofel und Ei   = Spinat; Kartofeln; Ei; Gewürze
+        // -Lasagne                 = Hackfleich; Pasirtetomaten; Tomarenmark; Zwibeln; Nudeln; Knoblauch; Gewürze; Milch; Butter; Käse
+        // -Chilli Con Carne       = Hackfleich; Knoblauch; Chilischoten; Tomaten; Gewürze
+        // -Piza                    = Mehl; Wasser; PasiterTomaten; Oliven; Käse; Hefe (hast du sie gefunden?)
+
+        // Zutaten
+        public static bool kalbsschnitzel;
+        public static bool pomes;
+        public static bool ei;
+        public static bool mehl;
+        public static bool sammelbrösel;
+        public static bool gewürze;
+        public static bool hackfleisch;
+        public static bool pasirtetomaten;
+        public static bool tomatenmark;
+        public static bool tomaten;
+        public static bool zwibeln;
+        public static bool nudeln;
+        public static bool knoblauch;
+        public static bool spinat;
+        public static bool kartofeln;
+        public static bool milch;
+        public static bool butter;
+        public static bool käse;
+        public static bool chilischoten;
+        public static bool oliven;
+        public static bool wasser;
+        public static bool hefe;
+
+        public static int counter = 0;
+
+        public static string[] gerichte = { "", "Schnitzel mit Pommes", "Nudel Bolognese", "Spinat Kartoffel und Ei", "Lasagne", "Chilli Con Carne", "Pizza", "Zurück" };
+        static sbyte anzahlGerichte = 7;
+
+        static void Main(string[] args)
+        {
+            Variabeln();
+            Option("");
+            
+            //Külschrank();
+
+            Console.ReadKey();
+
+        }
+
+        static void Variabeln()
+        {
+            // Ordnet den Variablen Random Werte ZU
+            var random = new Random();
+
+            kalbsschnitzel = Convert.ToBoolean(random.Next(2));
+            pomes = Convert.ToBoolean(random.Next(2));
+            ei = Convert.ToBoolean(random.Next(2));
+            mehl = Convert.ToBoolean(random.Next(2));
+            sammelbrösel = Convert.ToBoolean(random.Next(2));
+            gewürze = Convert.ToBoolean(random.Next(2));
+            hackfleisch = Convert.ToBoolean(random.Next(2));
+            pasirtetomaten = Convert.ToBoolean(random.Next(2));
+            tomatenmark = Convert.ToBoolean(random.Next(2));
+            tomaten = Convert.ToBoolean(random.Next(2));
+            zwibeln = Convert.ToBoolean(random.Next(2));
+            nudeln = Convert.ToBoolean(random.Next(2));
+            knoblauch = Convert.ToBoolean(random.Next(2));
+            spinat = Convert.ToBoolean(random.Next(2));
+            kartofeln = Convert.ToBoolean(random.Next(2));
+            milch = Convert.ToBoolean(random.Next(2));
+            butter = Convert.ToBoolean(random.Next(2));
+            käse = Convert.ToBoolean(random.Next(2));
+            chilischoten = Convert.ToBoolean(random.Next(2));
+            wasser = Convert.ToBoolean(random.Next(2));
+            oliven = Convert.ToBoolean(random.Next(2));
+            hefe = Convert.ToBoolean(random.Next(2));
+        }
+
+        public static void Option(String re)
+        {
+            string[] option = { "", "Kochen", "Vorrat Anzeigen", "Einkaufen", "Beenden", "Beenden" };
+            sbyte anzahl = 4;
+            sbyte auslese = 0;
+
+
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("             Was möchtest du?");
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("");
+
+            for (int i = 1; i <= anzahl; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("       [");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(i);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("]  ");
+                try
+                {
+                    Console.WriteLine(option[i]);
+                }
+                catch
+                { }
+            }
+            Console.WriteLine("");
+            if (counter > 0) Console.WriteLine("Es wurde " + counter + " mal Engekauft.");    
+            
+            else Console.WriteLine("Es wurde noch nicht Eingekauft");
+            
+            Console.WriteLine("");
+
+            if (!re.Equals(""))
+            {
+                Console.WriteLine(re);
+                Console.WriteLine();
+            }
+
+            try
+            {
+                auslese = Convert.ToSByte(Console.ReadLine());
+            }
+            catch 
+            
+            {
+                Console.Clear();
+                Option("gebe bitte einen Gültigen Wert ein.");
+            }
+            if (auslese < 0 || auslese > anzahl)
+            {
+                Console.Clear();
+                Option("gebe bitte einen Gültigen Wert ein.");
+
+            }
+
+            switch (auslese)
+            {
+                case 1:
+                    OptionGerite("");
+                    break;
+
+                case 2:
+                    VorratAnzeigen("");
+                    break;
+                case 3:
+                    Einkaufen();
+                    break;
+                case 4:
+                    Environment.Exit(0);
+                    break;
+                case 5:
+                    Environment.Exit(0);
+                    break;
+
+            }
+            Console.Clear();
+            Option("");
+        }
+        static void OptionGerite(String re)
+        {
+            sbyte auslese = 0;
+
+            Console.Clear();
+
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("          Was möchtest du kochen?");
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("");
+
+            for (int i = 1; i <= anzahlGerichte; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("       [");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(i);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("]  ");
+                try
+                {
+                    Console.WriteLine(gerichte[i]);
+                }
+                catch { Console.WriteLine("Die anzahl gerichen stimt nicht mit denn Namen über ein"); }
+            }
+            Console.WriteLine("");
+
+            if (!re.Equals(""))
+            {
+                Console.WriteLine(re);
+                Console.WriteLine();
+            }
+
+            try
+            {
+                auslese = Convert.ToSByte(Console.ReadLine());
+            }
+            catch
+
+            {
+                Console.Clear();
+                Option("gebe bitte einen Gültigen Wert ein.");
+            }
+            if (auslese < 0 || auslese > anzahlGerichte)
+            {
+                Console.Clear();
+                Option("gebe bitte einen Gültigen Wert ein.");
+
+            }
+
+            switch (auslese)
+            {
+                case 1:
+                    Gerichte.Schnitzel();
+                    break;
+                case 2:
+                    Gerichte.Bolonese();
+                    break;
+                case 3:
+                    Gerichte.Spinat();
+                    break;
+                case 4:
+                    Gerichte.Lasagne();
+                    break;
+                case 5:
+                    Gerichte.Chilli();
+                    break;
+                case 6:
+                    Gerichte.Pizza();
+                    break;
+                case 7:
+                    return;
+            }
+            Console.Clear();
+            return;
+        }
+        static void VorratAnzeigen(String re)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(kalbsschnitzel);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Kalbsschnitzel    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(pomes);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Pommes    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(ei);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Ei    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(mehl);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Mehl    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(sammelbrösel);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Semmelbrösel    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(gewürze);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Gewürze    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(hackfleisch);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Hackfleisch    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(pasirtetomaten);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Passierte Tomaten    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(tomatenmark);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Tomatenmark    ");
+            
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(tomaten);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Tomatenmark    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(zwibeln);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Zwibeln    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(nudeln);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Nudeln    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(knoblauch);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Knoblauch    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(spinat);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Spinat    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(kartofeln);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Kartoffeln    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(milch);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Milch    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(butter);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Butter    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(käse);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Käse    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(chilischoten);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Chilischoten    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(wasser);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Wasser    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(oliven);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Oliven    ");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(hefe);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("    Hefe");
+
+            Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+            Console.ReadKey();
+            return;
+        }
+
+        public static void Einkaufen()
+        {
+            kalbsschnitzel = true;
+            pomes = true;
+            ei = true;
+            mehl = true;
+            sammelbrösel = true;
+            gewürze = true;
+            hackfleisch = true;
+            pasirtetomaten = true;
+            tomatenmark = true;
+            tomaten = true;
+            zwibeln = true;
+            nudeln = true;
+            knoblauch = true;
+            spinat = true;
+            kartofeln = true;
+            milch = true;
+            butter = true;
+            käse = true;
+            chilischoten = true;
+            wasser = true;
+            oliven = true;
+            hefe = true;
+            counter++;
+            Console.WriteLine("Alle Foräte wurden Aufgefült");
+            Console.WriteLine("Zum verlassen bitte eine Taste drücken");
+            Console.ReadKey();
+            return;
+        }
+        static void Külschrank()
+        {
+
+        }
+    }
+}
